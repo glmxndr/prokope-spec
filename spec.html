@@ -1,0 +1,1361 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+lang="en" xml:lang="en">
+<head>
+<title>Stoic resources spec</title>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2010-05-19 07:33:19 CEST"/>
+<meta name="author" content="subtenante"/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color:lightblue; font-weight:normal }
+  .target { }
+  .timestamp { color: grey }
+  .timestamp-kwd { color: CadetBlue }
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*/-->
+</script>
+</head><body>
+<h1 class="title">Stoic resources spec</h1>
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 Project presentation </a>
+<ul>
+<li><a href="#sec-1.1">1.1 Motivation </a></li>
+</ul>
+</li>
+<li><a href="#sec-2">2 Considerations and responses </a>
+<ul>
+<li><a href="#sec-2.1">2.1 About classical texts </a>
+<ul>
+<li><a href="#sec-2.1.1">2.1.1 Considerations expression </a></li>
+<li><a href="#sec-2.1.2">2.1.2 Responses to the considerations </a></li>
+</ul>
+</li>
+<li><a href="#sec-2.2">2.2 About contemporary knowledge creation </a>
+<ul>
+<li><a href="#sec-2.2.1">2.2.1 Considerations expression </a></li>
+<li><a href="#sec-2.2.2">2.2.2 Responses to the considerations </a></li>
+</ul>
+</li>
+<li><a href="#sec-2.3">2.3 About privacy and decentralization </a>
+<ul>
+<li><a href="#sec-2.3.1">2.3.1 Considerations expression </a></li>
+<li><a href="#sec-2.3.2">2.3.2 Responses to the considerations </a></li>
+</ul>
+</li>
+<li><a href="#sec-2.4">2.4 About table of contents </a>
+<ul>
+<li><a href="#sec-2.4.1">2.4.1 Considerations expression </a></li>
+<li><a href="#sec-2.4.2">2.4.2 Responses to the considerations </a></li>
+</ul>
+</li>
+<li><a href="#sec-2.5">2.5 About internationalization </a>
+<ul>
+<li><a href="#sec-2.5.1">2.5.1 Considerations expression </a></li>
+<li><a href="#sec-2.5.2">2.5.2 Responses to the considerations </a></li>
+</ul>
+</li>
+<li><a href="#sec-2.6">2.6 Usage examples </a></li>
+</ul>
+</li>
+<li><a href="#sec-3">3 Concepts and Types of objects </a>
+<ul>
+<li><a href="#sec-3.1">3.1 Languages </a>
+<ul>
+<li><a href="#sec-3.1.1">3.1.1 Introduction </a></li>
+<li><a href="#sec-3.1.2">3.1.2 GUI </a></li>
+<li><a href="#sec-3.1.3">3.1.3 Data content categorization </a></li>
+</ul>
+</li>
+<li><a href="#sec-3.2">3.2 Authors </a>
+<ul>
+<li><a href="#sec-3.2.1">3.2.1 Classic authors </a></li>
+<li><a href="#sec-3.2.2">3.2.2 Quoted authors </a></li>
+<li><a href="#sec-3.2.3">3.2.3 Private authors </a></li>
+</ul>
+</li>
+<li><a href="#sec-3.3">3.3 Karma </a>
+<ul>
+<li><a href="#sec-3.3.1">3.3.1 Definition </a></li>
+<li><a href="#sec-3.3.2">3.3.2 Scope</a></li>
+<li><a href="#sec-3.3.3">3.3.3 Karma modification</a></li>
+</ul>
+</li>
+<li><a href="#sec-3.4">3.4 Users </a>
+<ul>
+<li><a href="#sec-3.4.1">3.4.1 Typology </a></li>
+<li><a href="#sec-3.4.2">3.4.2 User rights </a></li>
+</ul>
+</li>
+<li><a href="#sec-3.5">3.5 Opera (repositories) </a>
+<ul>
+<li><a href="#sec-3.5.1">3.5.1 Classic opera </a></li>
+<li><a href="#sec-3.5.2">3.5.2 Private opera </a></li>
+<li><a href="#sec-3.5.3">3.5.3 Collaborative opera </a></li>
+</ul>
+</li>
+<li><a href="#sec-3.6">3.6 Editions (branches) </a></li>
+<li><a href="#sec-3.7">3.7 TOC </a>
+<ul>
+<li><a href="#sec-3.7.1">3.7.1 TOC Links </a></li>
+<li><a href="#sec-3.7.2">3.7.2 TOC Modification </a></li>
+<li><a href="#sec-3.7.3">3.7.3 TOC Modelization </a></li>
+</ul>
+</li>
+<li><a href="#sec-3.8">3.8 Content </a>
+<ul>
+<li><a href="#sec-3.8.1">3.8.1 Textual content </a></li>
+<li><a href="#sec-3.8.2">3.8.2 Link to an external resource </a></li>
+<li><a href="#sec-3.8.3">3.8.3 Plugins </a></li>
+</ul>
+</li>
+<li><a href="#sec-3.9">3.9 Annotations </a>
+<ul>
+<li><a href="#sec-3.9.1">3.9.1 TOC entry annotation </a></li>
+</ul>
+</li>
+<li><a href="#sec-3.10">3.10 Rendering engines </a>
+<ul>
+<li><a href="#sec-3.10.1">3.10.1 Built-in rendering engines </a></li>
+</ul></li>
+</ul>
+</li>
+<li><a href="#sec-4">4 Use cases </a>
+<ul>
+<li><a href="#sec-4.1">4.1 Normal User </a>
+<ul>
+<li><a href="#sec-4.1.1">4.1.1 Basical Hypomnemata usage </a></li>
+<li><a href="#sec-4.1.2">4.1.2 Basical Blog usage </a></li>
+<li><a href="#sec-4.1.3">4.1.3 Basic Private Book Compilation </a></li>
+<li><a href="#sec-4.1.4">4.1.4 Basic Collective Book Creation </a></li>
+<li><a href="#sec-4.1.5">4.1.5 Basic commenting / annotation usage </a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1">1 Project presentation </h2>
+<div id="text-1">
+
+
+
+</div>
+
+<div id="outline-container-1.1" class="outline-3">
+<h3 id="sec-1.1">1.1 Motivation </h3>
+<div id="text-1.1">
+
+<p>Software development is growing a social way of working. Tools such
+as <a href="http://www.github.com">Github</a> allow to share one's programs with other programmers, who
+may take the program, copy it on their own repository, work on it
+by themselves, and propose modifications. Then, useful
+contributions can be merged into the mother repository.
+</p>
+<p>
+There is no reason we could not apply the same kind of pattern to
+philosophy. People have thoughts worth sharing, worth
+adopting. Actually this kind of pattern is already used among
+intellectuals, musicians, etc. Everybody borrows from the others.
+But there is no infrastructure for doing so.
+</p>
+<p>
+But it is hard to genuinely borrow from Epictetus. Because his
+books have been translated into many different languages, many
+times, and without a careful study of the footnotes, and careful
+comparison between several editions, one may easily be mislead by
+the translator(s).
+</p>
+<p>
+The goal of the described application is to answer a certain number
+of issues, among which classical text accessibility, and ease in
+sharing one's thoughts among other people caring about the same
+topic. The application is not usable only by the stoic community,
+although the stoic community is its initial target. The same
+principle apply to any community whose common reference is mostly
+found in textual material.
+</p>
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2">2 Considerations and responses </h2>
+<div id="text-2">
+
+
+<p>
+This section presents the project by trying to list a certain number
+of considerations sorted by main themes. These considerations lead
+to informal business requirements that the application must
+address.
+</p>
+
+</div>
+
+<div id="outline-container-2.1" class="outline-3">
+<h3 id="sec-2.1">2.1 About classical texts </h3>
+<div id="text-2.1">
+
+
+</div>
+
+<div id="outline-container-2.1.1" class="outline-4">
+<h4 id="sec-2.1.1">2.1.1 Considerations expression </h4>
+<div id="text-2.1.1">
+
+<ul>
+<li>
+There is no global repository to find official or important texts
+in Stoicism.
+</li>
+<li>
+There are many different versions of these texts, translated by
+many authors in many different languages. Some of them match in
+their table of contents, some other don't.
+</li>
+<li>
+There is no easy way to refer to the original texts, nor to
+compare the different editions.
+
+</li>
+</ul>
+</div>
+
+</div>
+
+<div id="outline-container-2.1.2" class="outline-4">
+<h4 id="sec-2.1.2">2.1.2 Responses to the considerations </h4>
+<div id="text-2.1.2">
+
+<p>This document describes an application which:
+</p><ul>
+<li>
+hosts the reference texts,
+</li>
+<li>
+allows to compare the editions easily.
+
+</li>
+</ul>
+
+<p>The users are able to:
+</p><ul>
+<li>
+collect references into personal anthologies,
+</li>
+<li>
+comment or annotate parts of the reference texts.
+</li>
+<li>
+export/render the reference opera or anthologies into booklets.
+
+
+</li>
+</ul>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-2.2" class="outline-3">
+<h3 id="sec-2.2">2.2 About contemporary knowledge creation </h3>
+<div id="text-2.2">
+
+
+</div>
+
+<div id="outline-container-2.2.1" class="outline-4">
+<h4 id="sec-2.2.1">2.2.1 Considerations expression </h4>
+<div id="text-2.2.1">
+
+<ul>
+<li>
+There are today's works which deserve to be treated as important
+advances to stoicism.
+</li>
+<li>
+Nobody can tell today which of these works will be considered as
+classic texts in the future (if any).
+</li>
+<li>
+The stoic community can group its efforts to produce important
+contributions to the stoic philosophy.
+
+</li>
+</ul>
+</div>
+
+</div>
+
+<div id="outline-container-2.2.2" class="outline-4">
+<h4 id="sec-2.2.2">2.2.2 Responses to the considerations </h4>
+<div id="text-2.2.2">
+
+<p>This document describes an application which:
+</p><ul>
+<li>
+allows anybody to create an 'author' account,
+</li>
+<li>
+allows anybody to share his/her own texts,
+</li>
+<li>
+allows anybody to allow anybody to copy and modify his/her own
+texts,
+</li>
+<li>
+allows common efforts to be forked/merged, exactly the same way
+it is done in software development,
+</li>
+<li>
+allows people to comment/annotate other people's texts,
+</li>
+<li>
+render texts from other users as PDF books/booklets.
+
+
+</li>
+</ul>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-2.3" class="outline-3">
+<h3 id="sec-2.3">2.3 About privacy and decentralization </h3>
+<div id="text-2.3">
+
+
+</div>
+
+<div id="outline-container-2.3.1" class="outline-4">
+<h4 id="sec-2.3.1">2.3.1 Considerations expression </h4>
+<div id="text-2.3.1">
+
+<ul>
+<li>
+Personal data is a critical topic. Users of online
+services/applications become aware of their privacy and wish to
+have full rights over the content they have produced.
+</li>
+<li>
+Different communities may generate content independently, and yet
+wish to share their product with other communities.
+
+</li>
+</ul>
+</div>
+
+</div>
+
+<div id="outline-container-2.3.2" class="outline-4">
+<h4 id="sec-2.3.2">2.3.2 Responses to the considerations </h4>
+<div id="text-2.3.2">
+
+<p>This document describes an application which:
+</p><ul>
+<li>
+proposes a protocol of communication between its different
+instances, so that each instance of the application is able
+to reference other instances and fetch data from them,
+</li>
+<li>
+rests upon open architectures in matters of authentication to
+facilitate the user's navigation between servers,
+</li>
+<li>
+allows users to easily restrict other user's access to their
+content.
+</li>
+</ul>
+
+<p>The fact that this application's usage may be spread accross many
+countries, with different legislations regarding intellectual
+property and copyrights, makes necessary that all users agree on
+terms of utilization. These terms are targeted at two goals :
+</p><ul>
+<li>
+allow people to protect the content they want to keep private (as
+hypomnemata, or work-in-progress translations, etc.),
+</li>
+<li>
+encourage the sharing of knowledge, by making compulsorily public
+the content which has been borrowed from other people.
+
+
+</li>
+</ul>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-2.4" class="outline-3">
+<h3 id="sec-2.4">2.4 About table of contents </h3>
+<div id="text-2.4">
+
+
+</div>
+
+<div id="outline-container-2.4.1" class="outline-4">
+<h4 id="sec-2.4.1">2.4.1 Considerations expression </h4>
+<div id="text-2.4.1">
+
+<ul>
+<li>
+Table of contents (TOC) between several editions of the same
+opus may change.
+</li>
+<li>
+There is no standard TOC architecture. Books may be subdivised
+into tomes, volumes, parts, chapters, sections, subsections of
+order n, paragraphs, sometimes sentences with highly scrutinized
+classical texts such as the ones from Plato or Aristotle.
+</li>
+<li>
+Not only the TOC, but the TOC structure may vary between several
+editions of the same opus.
+</li>
+<li>
+When reading a classic text, it is very helpful to be able to
+see easily what is the text of the same TOC entry in another
+edition.
+
+</li>
+</ul>
+</div>
+
+</div>
+
+<div id="outline-container-2.4.2" class="outline-4">
+<h4 id="sec-2.4.2">2.4.2 Responses to the considerations </h4>
+<div id="text-2.4.2">
+
+<p>This document describes an application which:
+</p><ul>
+<li>
+allows to easily manage the TOC of an edition,
+</li>
+<li>
+allows to easily integrate a TOC from a new edition with the
+TOC of the already existing editions,
+</li>
+<li>
+allows to easily navigate between the TOC entries between
+several editions of the same opus,
+</li>
+<li>
+allows to easily link to a TOC entry in a particular edition
+of an opus,
+</li>
+<li>
+allows to easily link to an abstract TOC entry in all the
+known editions of an opus, this abstract TOC entry referencing
+all the corresponding TOC entries within the editions.
+
+
+
+
+</li>
+</ul>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-2.5" class="outline-3">
+<h3 id="sec-2.5">2.5 About internationalization </h3>
+<div id="text-2.5">
+
+
+</div>
+
+<div id="outline-container-2.5.1" class="outline-4">
+<h4 id="sec-2.5.1">2.5.1 Considerations expression </h4>
+<div id="text-2.5.1">
+
+<ul>
+<li>
+Human natural languages are highly diverse. Some scripts are
+read left to right, some other right to left.
+</li>
+<li>
+Representing all possible translations of a certain content
+means to have highly customized renderings.
+
+</li>
+</ul>
+</div>
+
+</div>
+
+<div id="outline-container-2.5.2" class="outline-4">
+<h4 id="sec-2.5.2">2.5.2 Responses to the considerations </h4>
+<div id="text-2.5.2">
+
+<p>This document describes an application which:
+</p><ul>
+<li>
+has all its formatting templates ready for
+internationalization,
+</li>
+<li>
+allows to display different languages (meaning using different
+formatting templates) within the same pages.
+
+
+</li>
+</ul>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-2.6" class="outline-3">
+<h3 id="sec-2.6">2.6 Usage examples </h3>
+<div id="text-2.6">
+
+<p>Users may :
+</p><ul>
+<li>
+create anthology booklet,
+</li>
+<li>
+transcribe and share an ancient edition (free of copyrights) of
+Epictetus' Manual in English,
+</li>
+<li>
+comment and annotate this edition,
+</li>
+<li>
+link its table of contents to the other editions,
+</li>
+<li>
+create their own hypomnemata repository,
+</li>
+<li>
+create a blog-like personal repository,
+</li>
+<li>
+collect interesting posts from internet forums and edit them into
+a book,
+</li>
+<li>
+provide a new translation of Seneca Letters,
+</li>
+<li>
+etc.
+
+
+</li>
+</ul>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3">3 Concepts and Types of objects </h2>
+<div id="text-3">
+
+
+
+</div>
+
+<div id="outline-container-3.1" class="outline-3">
+<h3 id="sec-3.1">3.1 Languages </h3>
+<div id="text-3.1">
+
+
+</div>
+
+<div id="outline-container-3.1.1" class="outline-4">
+<h4 id="sec-3.1.1">3.1.1 Introduction </h4>
+<div id="text-3.1.1">
+
+<p>Languages are very difficult to define.
+The application has two different usage of languages:
+</p><ul>
+<li>
+application graphical user interface (GUI)
+</li>
+<li>
+data content categorization
+
+</li>
+</ul>
+
+<p>There must be a good balance between complexity and ease of use.
+The languages in both of these instances are regarded as the same
+entities, and stored in the same place.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-3.1.2" class="outline-4">
+<h4 id="sec-3.1.2">3.1.2 GUI </h4>
+<div id="text-3.1.2">
+
+<p>Some languages are available for the GUI.
+The GUI can be displayed in English, French, Spanish, etc.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-3.1.3" class="outline-4">
+<h4 id="sec-3.1.3">3.1.3 Data content categorization </h4>
+<div id="text-3.1.3">
+
+<p>Some languages, which are not spoken anymore, need to be created
+to categorize the texts.
+For example, texts can be set as being written in Latin or Ancient
+Greek, although there is no possibility to set the GUI in these
+languages.
+</p>
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-3.2" class="outline-3">
+<h3 id="sec-3.2">3.2 Authors </h3>
+<div id="text-3.2">
+
+
+</div>
+
+<div id="outline-container-3.2.1" class="outline-4">
+<h4 id="sec-3.2.1">3.2.1 Classic authors </h4>
+<div id="text-3.2.1">
+
+<p>A classic author is an author whose works are in the public domain.
+</p>
+<p>
+Authors such as Epictetus or Seneca are classic authors.
+</p>
+<p>
+Classic authors can be controlled by users having acquired the
+rights to modify public author accounts.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-3.2.2" class="outline-4">
+<h4 id="sec-3.2.2">3.2.2 Quoted authors </h4>
+<div id="text-3.2.2">
+
+<p>A quoted author is an author whose opera are not in the public
+domain, and has no attached user account.
+</p>
+<p>
+A quoted author may become a private author if the physical person
+corresponding to this author opens an account and proves his/her
+identity to an administrator.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-3.2.3" class="outline-4">
+<h4 id="sec-3.2.3">3.2.3 Private authors </h4>
+<div id="text-3.2.3">
+
+<p>A private author is an author attached to a User account. It is
+controlled solely by the User.
+</p>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-3.3" class="outline-3">
+<h3 id="sec-3.3">3.3 Karma </h3>
+<div id="text-3.3">
+
+
+</div>
+
+<div id="outline-container-3.3.1" class="outline-4">
+<h4 id="sec-3.3.1">3.3.1 Definition </h4>
+<div id="text-3.3.1">
+
+<p>The karma points directly represent the user's contribution to the
+community of users.
+</p></div>
+
+</div>
+
+<div id="outline-container-3.3.2" class="outline-4">
+<h4 id="sec-3.3.2">3.3.2 Scope &nbsp;&nbsp;&nbsp;<span class="tag">BR_KAR001</span></h4>
+<div id="text-3.3.2">
+
+<p>Each user has karma points.
+</p></div>
+
+</div>
+
+<div id="outline-container-3.3.3" class="outline-4">
+<h4 id="sec-3.3.3">3.3.3 Karma modification &nbsp;&nbsp;&nbsp;<span class="tag">BR_KAR002</span></h4>
+<div id="text-3.3.3">
+
+<p>When a user's contribution is upvoted by other users, the user's
+karma goes up (like the square root of numbers of upvotes to
+minimize the effect of focus on already high-voted items).
+</p>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-3.4" class="outline-3">
+<h3 id="sec-3.4">3.4 Users </h3>
+<div id="text-3.4">
+
+<p>Several types of users exist for the stoic-resources application.
+</p>
+
+</div>
+
+<div id="outline-container-3.4.1" class="outline-4">
+<h4 id="sec-3.4.1">3.4.1 Typology </h4>
+<div id="text-3.4.1">
+
+<ul>
+<li id="sec-3.4.1.1">User <br/>
+When a new user has just registered.
+
+</li>
+<li id="sec-3.4.1.2">Administrator <br/>
+An administrator is a user with all rights activated.
+
+</li>
+</ul>
+</div>
+
+</div>
+
+<div id="outline-container-3.4.2" class="outline-4">
+<h4 id="sec-3.4.2">3.4.2 User rights </h4>
+<div id="text-3.4.2">
+
+<p>According to his/her karma, or whether the user is an
+administrator, certain functionalities are allowed. Here is a list
+of such functionalities.
+</p>
+<ul>
+<li id="sec-3.4.2.1">Level 0 <br/>
+Rights acquired by sole account creation
+<ul>
+<li id="sec-3.4.2.1.1">Create a private opus <br/>
+</li>
+<li id="sec-3.4.2.1.2">Create a private edition <br/>
+</li>
+<li id="sec-3.4.2.1.3">Create entries in a private edition <br/>
+</li>
+<li id="sec-3.4.2.1.4">Comment and annotate one's own content <br/>
+</li>
+<li id="sec-3.4.2.1.5">Export one's edition <br/>
+</li>
+</ul>
+</li>
+<li id="sec-3.4.2.2">Level 1 <br/>
+<ul>
+<li id="sec-3.4.2.2.1">Fork an edition <br/>
+</li>
+<li id="sec-3.4.2.2.2">Comment and annotate other's content <br/>
+</li>
+</ul>
+</li>
+<li id="sec-3.4.2.3">Level 2 <br/>
+<ul>
+<li id="sec-3.4.2.3.1">Create a collaborative opus <br/>
+</li>
+</ul>
+</li>
+<li id="sec-3.4.2.4">Level 3 <br/>
+<ul>
+<li id="sec-3.4.2.4.1">Edit content in classic opera <br/>
+</li>
+</ul>
+</li>
+<li id="sec-3.4.2.5">Level 4 <br/>
+<ul>
+<li id="sec-3.4.2.5.1">Edit content in quoted author opera <br/>
+</li>
+</ul>
+</li>
+<li id="sec-3.4.2.6">Level 5 <br/>
+Administrator level
+<ul>
+<li id="sec-3.4.2.6.1">Edit or delete any content (comments, entries, etc.) <br/>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-3.5" class="outline-3">
+<h3 id="sec-3.5">3.5 Opera (repositories) </h3>
+<div id="text-3.5">
+
+<p>An opus is a repository for content.
+</p>
+<p>
+An opus has a set of authors.
+</p>
+<p>
+This set may change with time, according to who participates in it.
+</p>
+
+</div>
+
+<div id="outline-container-3.5.1" class="outline-4">
+<h4 id="sec-3.5.1">3.5.1 Classic opera </h4>
+<div id="text-3.5.1">
+
+<p>A classic opus is an opus by a classic author. Its content is editable
+by all the users who have the proper right for it.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-3.5.2" class="outline-4">
+<h4 id="sec-3.5.2">3.5.2 Private opera </h4>
+<div id="text-3.5.2">
+
+<p>A private opus is one that belongs to a private author, and can be
+modified only by this author. Private opera may be opened to comments
+though.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-3.5.3" class="outline-4">
+<h4 id="sec-3.5.3">3.5.3 Collaborative opera </h4>
+<div id="text-3.5.3">
+
+<p>A collaborative opus is one that is opened to any User who has the
+right to contribute to collaborative opera. It is close to the idea of
+a wiki.
+</p>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-3.6" class="outline-3">
+<h3 id="sec-3.6">3.6 Editions (branches) </h3>
+<div id="text-3.6">
+
+<p>An edition refers to a special version of an opus.
+Look at it as a tagged version of an opus, or a branch.
+Each opus can have any number of editions.
+An edition has a set of authors, which may or may not be the same as
+its corresponding opus.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-3.7" class="outline-3">
+<h3 id="sec-3.7">3.7 TOC </h3>
+<div id="text-3.7">
+
+<p>An edition may have a TOC.
+</p>
+</div>
+
+<div id="outline-container-3.7.1" class="outline-4">
+<h4 id="sec-3.7.1">3.7.1 TOC Links </h4>
+<div id="text-3.7.1">
+
+<ul>
+<li>
+Each element of the TOC may point to any number of other TOC entries
+from other editions, (including editions from other opera).
+This allows to know which other TOC entries outside this edition
+reflect the current TOC entry content.
+</li>
+<li>
+A graph of all the TOC entries can be generated to get all the TOC
+entries related to the current one.
+</li>
+</ul>
+</div>
+
+</div>
+
+<div id="outline-container-3.7.2" class="outline-4">
+<h4 id="sec-3.7.2">3.7.2 TOC Modification </h4>
+<div id="text-3.7.2">
+
+<p>A side project, javascript library called orgjs, allows to easily
+modify the TOC. Simple drag/drop for moving entries, and tools for
+searching other edition entries for linking purposes.
+</p></div>
+
+</div>
+
+<div id="outline-container-3.7.3" class="outline-4">
+<h4 id="sec-3.7.3">3.7.3 TOC Modelization </h4>
+<div id="text-3.7.3">
+
+<p>A TOC entry has two sides : a concrete side and an astract side.
+The abstract side allows to group several TOC entries and link
+between them.
+</p>
+<p>
+Abstract entries are not seen by users, it is just an artifact to
+allow easy navigation between several editions.
+</p>
+<p>
+The purpose of the abstract entry layer is to allow the User to
+link easily to all the other corresponding TOC entries, without
+relying on one of them in particular.
+</p>
+<p>
+Three models have been considered :
+</p><ul>
+<li>
+chained links between TOC entries, each concrete entry pointing
+to another concrete entry ; this model breaks when one link in
+the chain breaks,
+</li>
+<li>
+use of a higher-level opus default TOC (not attached to an
+edition in particular, each edition pointing to entries from the
+opus TOC) ; unfortunately this means that people wishing to
+create new TOC entries in their own private edition must be able
+to create entries in the opus default edition, or else they
+can't link to anything ; the opus TOC could easily become a mess
+if there are many editions,
+</li>
+<li>
+use of an automatic abstract level of entries, hidden from the
+user ; this models combines all advantages of the previous
+options (ease of linking from #1 and coherence from #2).
+
+</li>
+</ul>
+
+<p>Suppose we have 3 editions of Seneca's Letters. I create a new
+edition for this opus. I recently discovered an unknown letter,
+and add it to my TOC.
+</p><ul>
+<li>
+An abstract TOC entry is created.
+</li>
+<li>
+Somebody links to this letter and provides his own translation,
+in another edition. By linking to my letter's TOC entry, he
+actually links to the abstract TOC entry.
+</li>
+<li>
+Somebody else elaborates on the letter and links his own
+corrected translation on the first translator's TOC entry. This
+links to the very same abstract link.
+</li>
+<li>
+The first translator thinks this letter is a fake, and removes
+it from his edition. The second translator still points to the
+unchanged abstract link (still existing because two TOC entries
+still point to it).
+</li>
+<li>
+It becomes a general consensus that this letter is a fake. I
+delete my own TOC entry to it. The second translator still has
+his own translation, and the abstract TOC entry still exists.
+</li>
+<li>
+The second translators finds that there is no point in keeping
+his translation, and deletes the TOC entry. The abstract TOC
+entry is now unused, it is suppressed.
+
+</li>
+<li id="sec-3.7.3.1">Abstract entry creation <br/>
+<ul>
+<li>
+An abstract entry is created any time a new TOC entry is created,
+and is not linked to an other TOC entry.
+</li>
+<li>
+An abstract entry is created when a TOC entry which was
+pointing to other entries does not point to these entries
+anymore.
+</li>
+</ul>
+</li>
+<li id="sec-3.7.3.2">Abstract entry deletion <br/>
+<ul>
+<li>
+An abstract entry is deleted when the corresponding TOC entry
+is linked to at least another TOC entry, or is deleted, and
+there is no more concrete entry for this abstract entry.
+
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-3.8" class="outline-3">
+<h3 id="sec-3.8">3.8 Content </h3>
+<div id="text-3.8">
+
+
+</div>
+
+<div id="outline-container-3.8.1" class="outline-4">
+<h4 id="sec-3.8.1">3.8.1 Textual content </h4>
+<div id="text-3.8.1">
+
+</div>
+
+</div>
+
+<div id="outline-container-3.8.2" class="outline-4">
+<h4 id="sec-3.8.2">3.8.2 Link to an external resource </h4>
+<div id="text-3.8.2">
+
+</div>
+
+</div>
+
+<div id="outline-container-3.8.3" class="outline-4">
+<h4 id="sec-3.8.3">3.8.3 Plugins </h4>
+<div id="text-3.8.3">
+
+<p>Plugins are available to treat the content and allow special
+editing modes.
+</p><ul>
+<li id="sec-3.8.3.1">Formal argumentation content plugin <br/>
+The main plugin shipped with the application is a formal
+argumentation editor. Content will be treated as a formal
+argumentation containing logical connectors (premisses
+declaration ;if A then B else C; since A then B; etc.). Another
+specification will be issued for this particular plugin.
+</li>
+<li id="sec-3.8.3.2">'org-mode'-like plugin <br/>
+A plugin exists to treat content (TOC included), as an org-mode
+document. Special key events are attached to the document to
+perform the same tasks as in org-mode.
+
+</li>
+</ul>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-3.9" class="outline-3">
+<h3 id="sec-3.9">3.9 Annotations </h3>
+<div id="text-3.9">
+
+
+</div>
+
+<div id="outline-container-3.9.1" class="outline-4">
+<h4 id="sec-3.9.1">3.9.1 TOC entry annotation </h4>
+<div id="text-3.9.1">
+
+<p>Any TOC entry is annotable.
+If an edition is split until the sentence level, then all the
+sentences are annotable.
+</p>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-3.10" class="outline-3">
+<h3 id="sec-3.10">3.10 Rendering engines </h3>
+<div id="text-3.10">
+
+<p>Rendering engines allow to format an edition into human readable
+presentation.
+</p>
+<p>
+The authors of a book can choose which rendering engines are
+available.
+</p>
+<p>
+Rendering engines have a structure of plugin. Some built-in
+rendering engines are provided with the application.
+</p>
+</div>
+
+<div id="outline-container-3.10.1" class="outline-4">
+<h4 id="sec-3.10.1">3.10.1 Built-in rendering engines </h4>
+<div id="text-3.10.1">
+
+<ul>
+<li id="sec-3.10.1.1">PDF book rendering engines <br/>
+This rendering engine formats a content with LaTeX.
+</li>
+<li id="sec-3.10.1.2">Online book rendering engine <br/>
+This rendering engine presents the edition with table of
+contents, links, etc., as HTML.
+</li>
+<li id="sec-3.10.1.3">Blog rendering engine <br/>
+This rendering engine presents the edition and its entries as a
+blog.
+</li>
+<li id="sec-3.10.1.4">Hypomnemata rendering engine <br/>
+This rendering engine presents the edition as a micro-bloging
+thread.
+
+
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4">4 Use cases </h2>
+<div id="text-4">
+
+
+<p>
+Zeno, Cleanthes and Chrysippus are users of the system.
+</p>
+
+</div>
+
+<div id="outline-container-4.1" class="outline-3">
+<h3 id="sec-4.1">4.1 Normal User </h3>
+<div id="text-4.1">
+
+
+</div>
+
+<div id="outline-container-4.1.1" class="outline-4">
+<h4 id="sec-4.1.1">4.1.1 Basical Hypomnemata usage </h4>
+<div id="text-4.1.1">
+
+<ul>
+<li>
+Zeno creates a private author page.
+</li>
+<li>
+Zeno creates a new private opus : his hypomnemata. A base
+edition is automatically created for this opus.
+</li>
+<li>
+Zeno enters new entries into his edition.
+</li>
+<li>
+Zeno builds a TOC for organizing his entries.
+The interface for creating a TOC allows to easily generate an
+outline, resembling the org-mode system.
+Zeno can easily drag/drop his entries into his outline.
+</li>
+<li>
+Zeno exports his hypomnemata into a PDF booklet.
+</li>
+<li>
+Zeno can then use a third-party website to edit his hypomnemata
+into a real book, or print it by himself.
+</li>
+</ul>
+</div>
+
+</div>
+
+<div id="outline-container-4.1.2" class="outline-4">
+<h4 id="sec-4.1.2">4.1.2 Basical Blog usage </h4>
+<div id="text-4.1.2">
+
+<ul>
+<li>
+Same as a Hypomnemata usage.
+</li>
+<li>
+A dedicated rendering engine allows to present the entries as a
+blog (listed by descending date, with a calendar, showing numbr
+of comments, etc.).
+</li>
+</ul>
+</div>
+
+</div>
+
+<div id="outline-container-4.1.3" class="outline-4">
+<h4 id="sec-4.1.3">4.1.3 Basic Private Book Compilation </h4>
+<div id="text-4.1.3">
+
+<ul>
+<li>
+Zeno creates a new opus. A base edition for this opus is
+automatically created.
+</li>
+<li>
+Zeno visits classic opera, and drag/drops some of the TOC
+entries into his opus' base edition.
+</li>
+<li>
+Zeno creates a TOC structure for his edition and drag/drops his
+collected entries into his TOC entries.
+</li>
+<li>
+Zeno generates an export of his edition (for example as a PDF).
+</li>
+<li>
+Zeno creates a second edition for his opus. The TOC is copied
+from the base edition. Zeno changes the architecure a bit, adds
+some entries, adds comments and notes to the existing entries.
+</li>
+<li>
+Zeno exports the second edition.
+
+</li>
+</ul>
+</div>
+
+</div>
+
+<div id="outline-container-4.1.4" class="outline-4">
+<h4 id="sec-4.1.4">4.1.4 Basic Collective Book Creation </h4>
+<div id="text-4.1.4">
+
+<ul>
+<li>
+Zeno creates an open opus. A base edition is created.
+</li>
+<li>
+Zeno adds a few entries.
+</li>
+<li>
+Cleanthes joins the open opus.
+</li>
+<li>
+Cleanthes add a few entries.
+</li>
+<li>
+Zeno adds a TOC.
+</li>
+<li>
+Cleanthes affects new entries to TOC entries.
+</li>
+<li>
+Chrysippus make a branch of the opus, copying the base edition
+into his own edition.
+</li>
+<li>
+Chrysippus edits some entries.
+</li>
+<li>
+Cleanthes, seing Chrysippus' entries are interesting, imports
+them into the base edition.
+</li>
+<li>
+Zeno creates a second edition of the opus.
+There are now 3 editions : base, Chrysippus', Zeno's.
+
+</li>
+</ul>
+</div>
+
+</div>
+
+<div id="outline-container-4.1.5" class="outline-4">
+<h4 id="sec-4.1.5">4.1.5 Basic commenting / annotation usage </h4>
+<div id="text-4.1.5">
+
+<ul>
+<li>
+Zeno browses the Epictetus' Encheiridion, several editions are
+available on the system.
+</li>
+<li>
+Zeno
+
+
+
+
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble"><p class="author"> Author: subtenante
+<a href="mailto:subtenante@muTyP">&lt;subtenante@muTyP&gt;</a>
+</p>
+<p class="date"> Date: 2010-05-19 07:33:19 CEST</p>
+<p>HTML generated by org-mode 6.21b in emacs 23</p>
+</div></body>
+</html>

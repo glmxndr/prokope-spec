@@ -1,0 +1,462 @@
+Stoic resources spec
+
+* Project presentation
+
+** Motivation
+   Software development is growing a social way of working. Tools such
+   as [[http://www.github.com][Github]] allow to share one's programs with other programmers, who
+   may take the program, copy it on their own repository, work on it
+   by themselves, and propose modifications. Then, useful
+   contributions can be merged into the mother repository.
+
+   There is no reason we could not apply the same kind of pattern to
+   philosophy. People have thoughts worth sharing, worth
+   adopting. Actually this kind of pattern is already used among
+   intellectuals, musicians, etc. Everybody borrows from the others.
+   But there is no infrastructure for doing so.
+
+   But it is hard to genuinely borrow from Epictetus. Because his
+   books have been translated into many different languages, many
+   times, and without a careful study of the footnotes, and careful
+   comparison between several editions, one may easily be mislead by
+   the translator(s).
+
+   The goal of the described application is to answer a certain number
+   of issues, among which classical text accessibility, and ease in
+   sharing one's thoughts among other people caring about the same
+   topic. The application is not usable only by the stoic community,
+   although the stoic community is its initial target. The same
+   principle apply to any community whose common reference is mostly
+   found in textual material.
+
+* Considerations and responses
+
+  This section presents the project by trying to list a certain number
+  of considerations sorted by main themes. These considerations lead
+  to informal business requirements that the application must
+  address.
+
+** About classical texts
+*** Considerations expression
+    + There is no global repository to find official or important texts
+      in Stoicism.
+    + There are many different versions of these texts, translated by
+      many authors in many different languages. Some of them match in
+      their table of contents, some other don't.
+    + There is no easy way to refer to the original texts, nor to
+      compare the different editions.
+
+*** Responses to the considerations
+    This document describes an application which:
+      + hosts the reference texts,
+      + allows to compare the editions easily.
+
+    The users are able to:
+      + collect references into personal anthologies,
+      + comment or annotate parts of the reference texts.
+      + export/render the reference opera or anthologies into booklets.
+
+
+** About contemporary knowledge creation
+*** Considerations expression
+   + There are today's works which deserve to be treated as important
+     advances to stoicism.
+   + Nobody can tell today which of these works will be considered as
+     classic texts in the future (if any).
+   + The stoic community can group its efforts to produce important
+     contributions to the stoic philosophy.
+
+*** Responses to the considerations
+    This document describes an application which:
+      + allows anybody to create an 'author' account,
+      + allows anybody to share his/her own texts,
+      + allows anybody to allow anybody to copy and modify his/her own
+        texts,
+      + allows common efforts to be forked/merged, exactly the same way
+        it is done in software development,
+      + allows people to comment/annotate other people's texts,
+      + render texts from other users as PDF books/booklets.
+
+
+** About privacy and decentralization
+*** Considerations expression
+   + Personal data is a critical topic. Users of online
+     services/applications become aware of their privacy and wish to
+     have full rights over the content they have produced.
+   + Different communities may generate content independently, and yet
+     wish to share their product with other communities.
+
+*** Responses to the considerations
+    This document describes an application which:
+    + proposes a protocol of communication between its different
+      instances, so that each instance of the application is able
+      to reference other instances and fetch data from them,
+    + rests upon open architectures in matters of authentication to
+      facilitate the user's navigation between servers,
+    + allows users to easily restrict other user's access to their
+      content.
+    The fact that this application's usage may be spread accross many
+    countries, with different legislations regarding intellectual
+    property and copyrights, makes necessary that all users agree on
+    terms of utilization. These terms are targeted at two goals :
+    + allow people to protect the content they want to keep private (as
+      hypomnemata, or work-in-progress translations, etc.),
+    + encourage the sharing of knowledge, by making compulsorily public
+      the content which has been borrowed from other people.
+
+
+** About table of contents
+*** Considerations expression
+    + Table of contents (TOC) between several editions of the same
+      opus may change.
+    + There is no standard TOC architecture. Books may be subdivised
+      into tomes, volumes, parts, chapters, sections, subsections of
+      order n, paragraphs, sometimes sentences with highly scrutinized
+      classical texts such as the ones from Plato or Aristotle.
+    + Not only the TOC, but the TOC structure may vary between several
+      editions of the same opus.
+    + When reading a classic text, it is very helpful to be able to
+      see easily what is the text of the same TOC entry in another
+      edition.
+
+*** Responses to the considerations
+    This document describes an application which:
+      + allows to easily manage the TOC of an edition,
+      + allows to easily integrate a TOC from a new edition with the
+        TOC of the already existing editions,
+      + allows to easily navigate between the TOC entries between
+        several editions of the same opus,
+      + allows to easily link to a TOC entry in a particular edition
+        of an opus,
+      + allows to easily link to an abstract TOC entry in all the
+        known editions of an opus, this abstract TOC entry referencing
+        all the corresponding TOC entries within the editions.
+
+
+
+
+** About internationalization
+*** Considerations expression
+    + Human natural languages are highly diverse.
+    + Some scripts are read left to right, some other right to left.
+    + Representing all possible translations of a certain content
+      means to have highly customized formatting.
+
+*** Responses to the considerations
+    This document describes an application which:
+      + has all its formatting templates ready for
+        internationalization,
+      + allows to display different languages (meaning using different
+        formatting templates) within the same pages.
+
+
+** Usage examples
+   Users may :
+   + create anthology booklet,
+   + transcribe and share an ancient edition (free of copyrights) of
+     Epictetus' Manual in English,
+   + comment and annotate this edition,
+   + link its table of contents to the other editions,
+   + create their own hypomnemata repository,
+   + create a blog-like personal repository,
+   + collect interesting posts from internet forums and edit them into
+     a book,
+   + provide a new translation of Seneca Letters,
+   + etc.
+
+
+* Concepts and Types of objects
+
+** Languages
+*** Introduction
+    Languages are very difficult to define.
+    The application has two different usage of languages:
+    + application graphical user interface (GUI)
+    + data content categorization
+
+    There must be a good balance between complexity and ease of use.
+    The languages in both of these instances are regarded as the same
+    entities, and stored in the same place.
+
+*** GUI
+    Some languages are available for the GUI.
+    The GUI can be displayed in English, French, Spanish, etc.
+
+*** Data content categorization
+    Some languages, which are not spoken anymore, need to be created
+    to categorize the texts.
+    For example, texts can be set as being written in Latin or Ancient
+    Greek, although there is no possibility to set the GUI in these
+    languages.
+
+
+** Authors
+*** Classic authors
+    A classic author is an author whose works are in the public domain.
+
+    Authors such as Epictetus or Seneca are classic authors.
+
+    Classic authors can be controlled by users having acquired the
+    rights to modify public author accounts.
+
+*** Quoted authors
+    A quoted author is an author whose opera are not in the public
+    domain, and has no attached user account.
+
+    A quoted author may become a private author if the physical person
+    corresponding to this author opens an account and proves his/her
+    identity to an administrator.
+
+*** Private authors
+    A private author is an author attached to a User account. It is
+    controlled solely by the User.
+
+** Karma
+*** Definition
+    The karma points directly represent the user's contribution to the
+    community of users.
+*** Scope                                                        :BR_KAR001:
+    Each user has karma points.
+*** Karma modification                                           :BR_KAR002:
+    When a user's contribution is upvoted by other users, the user's
+    karma goes up (like the square root of numbers of upvotes to
+    minimize the effect of focus on already high-voted items).
+
+** Users
+   Several types of users exist for the stoic-resources application.
+
+*** Typology
+**** User
+     When a new user has just registered.
+
+**** Administrator
+     An administrator is a user with all rights activated.
+
+*** User rights
+    According to his/her karma, or whether the user is an
+    administrator, certain functionalities are allowed. Here is a list
+    of such functionalities.
+
+**** Level 0
+     Rights acquired by sole account creation
+***** Create a private opus
+***** Create a private edition
+***** Create entries in a private edition
+***** Comment and annotate one's own content
+***** Export one's edition
+**** Level 1
+***** Fork an edition
+***** Comment and annotate other's content
+**** Level 2
+***** Create a collaborative opus
+**** Level 3
+***** Edit content in classic opera
+**** Level 4
+***** Edit content in quoted author opera
+**** Level 5
+     Administrator level
+***** Edit or delete any content (comments, entries, etc.)
+** Opera (repositories)
+   An opus is a repository for content.
+
+   An opus has a set of authors.
+
+   This set may change with time, according to who participates in it.
+
+*** Classic opera
+    A classic opus is an opus by a classic author. Its content is editable
+    by all the users who have the proper right for it.
+
+*** Private opera
+    A private opus is one that belongs to a private author, and can be
+    modified only by this author. Private opera may be opened to comments
+    though.
+
+*** Collaborative opera
+    A collaborative opus is one that is opened to any User who has the
+    right to contribute to collaborative opera. It is close to the idea of
+    a wiki.
+
+** Editions (branches)
+   An edition refers to a special version of an opus.
+   Look at it as a tagged version of an opus, or a branch.
+   Each opus can have any number of editions.
+   An edition has a set of authors, which may or may not be the same as
+   its corresponding opus.
+
+** TOC
+   An edition may have a TOC.
+*** TOC Links
+    + Each element of the TOC may point to any number of other TOC entries
+      from other editions, (including editions from other opera).
+      This allows to know which other TOC entries outside this edition
+      reflect the current TOC entry content.
+    + A graph of all the TOC entries can be generated to get all the TOC
+      entries related to the current one.
+*** TOC Modification
+    A side project, javascript library called orgjs, allows to easily
+    modify the TOC. Simple drag/drop for moving entries, and tools for
+    searching other edition entries for linking purposes.
+*** TOC Modelization
+    A TOC entry has two sides : a concrete side and an astract side.
+    The abstract side allows to group several TOC entries and link
+    between them.
+
+    Abstract entries are not seen by users, it is just an artifact to
+    allow easy navigation between several editions.
+
+    The purpose of the abstract entry layer is to allow the User to
+    link easily to all the other corresponding TOC entries, without
+    relying on one of them in particular.
+
+    Three models have been considered :
+    + chained links between TOC entries, each concrete entry pointing
+      to another concrete entry ; this model breaks when one link in
+      the chain breaks,
+    + use of a higher-level opus default TOC (not attached to an
+      edition in particular, each edition pointing to entries from the
+      opus TOC) ; unfortunately this means that people wishing to
+      create new TOC entries in their own private edition must be able
+      to create entries in the opus default edition, or else they
+      can't link to anything ; the opus TOC could easily become a mess
+      if there are many editions,
+    + use of an automatic abstract level of entries, hidden from the
+      user ; this models combines all advantages of the previous
+      options (ease of linking from #1 and coherence from #2).
+
+    Suppose we have 3 editions of Seneca's Letters. I create a new
+    edition for this opus. I recently discovered an unknown letter,
+    and add it to my TOC.
+    + An abstract TOC entry is created.
+    + Somebody links to this letter and provides his own translation,
+      in another edition. By linking to my letter's TOC entry, he
+      actually links to the abstract TOC entry.
+    + Somebody else elaborates on the letter and links his own
+      corrected translation on the first translator's TOC entry. This
+      links to the very same abstract link.
+    + The first translator thinks this letter is a fake, and removes
+      it from his edition. The second translator still points to the
+      unchanged abstract link (still existing because two TOC entries
+      still point to it).
+    + It becomes a general consensus that this letter is a fake. I
+      delete my own TOC entry to it. The second translator still has
+      his own translation, and the abstract TOC entry still exists.
+    + The second translators finds that there is no point in keeping
+      his translation, and deletes the TOC entry. The abstract TOC
+      entry is now unused, it is suppressed.
+
+**** Abstract entry creation
+     + An abstract entry is created any time a new TOC entry is created,
+       and is not linked to an other TOC entry.
+     + An abstract entry is created when a TOC entry which was
+       pointing to other entries does not point to these entries
+       anymore.
+**** Abstract entry deletion
+     + An abstract entry is deleted when the corresponding TOC entry
+       is linked to at least another TOC entry, or is deleted, and
+       there is no more concrete entry for this abstract entry.
+
+** Content
+*** Textual content
+*** Link to an external resource
+*** Plugins
+    Plugins are available to treat the content and allow special
+    editing modes.
+**** Formal argumentation content plugin
+     The main plugin shipped with the application is a formal
+     argumentation editor. Content will be treated as a formal
+     argumentation containing logical connectors (premisses
+     declaration ;if A then B else C; since A then B; etc.). Another
+     specification will be issued for this particular plugin.
+**** 'org-mode'-like plugin
+     A plugin exists to treat content (TOC included), as an org-mode
+     document. Special key events are attached to the document to
+     perform the same tasks as in org-mode.
+
+** Annotations
+*** TOC entry annotation
+    Any TOC entry is annotable.
+    If an edition is split until the sentence level, then all the
+    sentences are annotable.
+
+** Rendering engines
+   Rendering engines allow to format an edition into human readable
+   presentation.
+
+   The authors of a book can choose which rendering engines are
+   available.
+
+   Rendering engines have a structure of plugin. Some built-in
+   rendering engines are provided with the application.
+*** Built-in rendering engines
+**** PDF book rendering engines
+     This rendering engine formats a content with LaTeX.
+**** Online book rendering engine
+     This rendering engine presents the edition with table of
+     contents, links, etc., as HTML.
+**** Blog rendering engine
+     This rendering engine presents the edition and its entries as a
+     blog.
+**** Hypomnemata rendering engine
+     This rendering engine presents the edition as a micro-bloging
+     thread.
+
+
+* Use cases
+
+  Zeno, Cleanthes and Chrysippus are users of the system.
+
+** Normal User
+*** Basical Hypomnemata usage
+    + Zeno creates a private author page.
+    + Zeno creates a new private opus : his hypomnemata. A base
+      edition is automatically created for this opus.
+    + Zeno enters new entries into his edition.
+    + Zeno builds a TOC for organizing his entries.
+      The interface for creating a TOC allows to easily generate an
+      outline, resembling the org-mode system.
+      Zeno can easily drag/drop his entries into his outline.
+    + Zeno exports his hypomnemata into a PDF booklet.
+    + Zeno can then use a third-party website to edit his hypomnemata
+      into a real book, or print it by himself.
+*** Basical Blog usage
+    + Same as a Hypomnemata usage.
+    + A dedicated rendering engine allows to present the entries as a
+      blog (listed by descending date, with a calendar, showing numbr
+      of comments, etc.).
+*** Basic Private Book Compilation
+    + Zeno creates a new opus. A base edition for this opus is
+      automatically created.
+    + Zeno visits classic opera, and drag/drops some of the TOC
+      entries into his opus' base edition.
+    + Zeno creates a TOC structure for his edition and drag/drops his
+      collected entries into his TOC entries.
+    + Zeno generates an export of his edition (for example as a PDF).
+    + Zeno creates a second edition for his opus. The TOC is copied
+      from the base edition. Zeno changes the architecure a bit, adds
+      some entries, adds comments and notes to the existing entries.
+    + Zeno exports the second edition.
+
+*** Basic Collective Book Creation
+    + Zeno creates an open opus. A base edition is created.
+    + Zeno adds a few entries.
+    + Cleanthes joins the open opus.
+    + Cleanthes add a few entries.
+    + Zeno adds a TOC.
+    + Cleanthes affects new entries to TOC entries.
+    + Chrysippus make a branch of the opus, copying the base edition
+      into his own edition.
+    + Chrysippus edits some entries.
+    + Cleanthes, seing Chrysippus' entries are interesting, imports
+      them into the base edition.
+    + Zeno creates a second edition of the opus.
+      There are now 3 editions : base, Chrysippus', Zeno's.
+
+*** Basic commenting / annotation usage
+    + Zeno browses the Epictetus' Encheiridion, several editions are
+      available on the system.
+    + Zeno
+
+
+
+
